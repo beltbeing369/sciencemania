@@ -1,1 +1,31 @@
 
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 파이썬 뉴스</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .article { border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+        h1 { color: #333; }
+        .date { color: #888; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>📰 나의 뉴스 사이트</h1>
+    <div id="content">
+        <!-- 파이썬이 여기에 기사 목록을 넣을 것입니다 -->
+        {{ ARTICLES }}
+    </div>
+
+    <!-- 댓글 기능 (Utterances) -->
+    <script src="https://utteranc.es/client.js"
+        repo="사용자ID/리포지토리이름" 
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+</body>
+</html>
