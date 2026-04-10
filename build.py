@@ -15,15 +15,17 @@ def build_site():
     # 2. 최신순 정렬
     data_list.sort(key=lambda x: x['date'], reverse=True)
     
-    # 3. 각 기사를 HTML 코드로 변환
-    for art in data_list:
-        articles_html += f"""
-        <div class="article">
-            <h2>{art['title']}</h2>
-            <p class="date">{art['date']} | 작성자: {art['author']}</p>
-            <p>{art['content']}</p>
-        </div>
-        """
+    # build.py의 3번 기사 변환 부분 수정
+for art in data_list:
+    img_tag = f'<img src="{art.get("image", "")}" style="max-width:100%">' if art.get("image") else ""
+    articles_html += f"""
+    <div class="article">
+        <h2>{art['title']}</h2>
+        {img_tag}
+        <p class="date">{art['date']} | 작성자: {art['author']}</p>
+        <p>{art['content']}</p>
+    </div>
+    """
     
     # 4. 템플릿 파일 읽기
     with open('templates/index.html', 'r', encoding='utf-8') as f:
