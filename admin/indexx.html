@@ -1,1 +1,39 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>글쓰기 페이지</title>
+  <!-- 아래 스크립트가 사이트 내에서 에디터를 실행해줍니다 -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</head>
+<body>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "본인ID/sciencemania", // 본인 계정명으로 수정하세요
+          branch: "main",
+        },
+        media_folder: "images",
+        collections: [
+          {
+            name: "news",
+            label: "뉴스 작성",
+            folder: "articles",
+            create: true,
+            extension: "json",
+            format: "json",
+            fields: [
+              { label: "제목", name: "title", widget: "string" },
+              { label: "날짜", name: "date", widget: "datetime" },
+              { label: "본문", name: "content", widget: "markdown" }
+            ],
+          },
+        ],
+      },
+    });
+  </script>
+</body>
+</html>
