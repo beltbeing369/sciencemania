@@ -1,1 +1,25 @@
 
+name: Deploy News Site
+on:
+  push:
+    branches: [ main ] # 메인 브랜치에 변화가 있을 때 실행
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run Build Script
+        run: python build.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # 현재 폴더의 결과물(index.html)을 배포
